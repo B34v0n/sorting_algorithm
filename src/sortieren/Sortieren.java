@@ -1,13 +1,18 @@
 package sortieren;
 
-import bank.*;
-import charakter.*;
-import items.*;
-import java.util.*;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+import bank.Bank;
+import charakter.Charakter;
+import items.Item;
+
 
 public class Sortieren {
 
 	//Hier werden die Bank, die Charaktere und die Itemarten erstellt.
+	public static Oberfläche Of = new Oberfläche();
 	public static int Lagergröße = 10;
 	public static int Inventargröße = 4;
 	public static Bank Lager = new Bank(Lagergröße);
@@ -35,13 +40,11 @@ public class Sortieren {
 		Waldläufer.ItemsFestlegen(Gift);
 		
 		
-		
+		/*
 		Scannen(Krieger);
 		Scannen(Magier);
 		Scannen(Waldläufer);
-		
-		sortierenKern();
-		
+		*/
 		
 		//TestSzenarien();
 		
@@ -58,20 +61,21 @@ public class Sortieren {
 		anzeigen();
 		InTextfeldSchreiben("\n");
 		sortieren(Krieger);
-		System.out.println("Krieger sortiert 1:");
-		anzeigen();
+		//System.out.println("Krieger sortiert 1:");
+		//anzeigen();
 		sortieren(Magier);
-		System.out.println("Magier sortiert 1:");
-		anzeigen();
+		//System.out.println("Magier sortiert 1:");
+		//anzeigen();
 		sortieren(Waldläufer);
-		System.out.println("Waldläufer sortiert:");
-		anzeigen();
+		//System.out.println("Waldläufer sortiert:");
+		//anzeigen();
 		sortieren(Magier);
-		System.out.println("Magier sortiert 2:");
-		anzeigen();
+		//System.out.println("Magier sortiert 2:");
+		//anzeigen();
 		sortieren(Krieger);
 		InTextfeldSchreiben("\n");
 		InTextfeldSchreiben("Endergebnis: \n");
+	
 		anzeigen();
 	}
 	
@@ -115,9 +119,9 @@ public class Sortieren {
 						InTextfeldSchreiben(Char.Name + " nimmt das Item " + Vergleichsitem.GibName() + "\n");
 						aktion = true;
 						Char.Einlagern(Vergleichsitem);
-						//Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
+						Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
 						Lager.Leeren(v);
-						//Of.BankBildlöschen(v+1);
+						Of.BankBildlöschen(v+1);
 						w = w + Char.InventarGröße;
 					}
 				}
@@ -137,9 +141,9 @@ public class Sortieren {
 				if (Char.Abgleich(Vergleichsitem) == true) {		//abgleichen. wenn es ein richtiges Item ist,
 					InTextfeldSchreiben(Char.Name + " nimmt das Item " + Vergleichsitem.GibName() + "\n");
 					Char.Einlagern(Vergleichsitem);					//Das Item wird am nächsten freien Inventarplatz eingelagert
-					//Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
 					Lager.Leeren(y);								//und der Bankplatz geleert.
-					//Of.BankBildlöschen(y+1);
+					Of.BankBildlöschen(y+1);
 					y = y + Lager.Größe;							//um aus der Schleife zu kommen.
 				
 					//Hier wird i NICHT erhöht, sodass für die Inventarstelle i (die jetzt frei ist) wieder abgeglichen werden kann.
@@ -158,10 +162,10 @@ public class Sortieren {
 		while (z < Lager.Größe) { 					//Wird das Lager mit z durchsucht:
 			if (Lager.IstLeer(z) == true) {			//Wenn der Lagerplatz an z Leer ist, dann:
 				InTextfeldSchreiben(Char.Name + " legt " + Char.GibItem(i).GibName() + " an die " + (z+1) + ".te Stelle in der Bank. \n");
-				//Of.BankBild(Char.GibItem(i).GibArt(), z+1);
+				Of.BankBild(Char.GibItem(i).GibArt(), z+1);
 				Lager.belegen(Char.GibItem(i), z);	//wird das Item an Platz i an Platz z gelegt. 
 				Char.Leeren(i);						//und die Stelle i im Inventar geleert. 
-				//Of.Itembildlöschen(Char.Name, i+1);
+				Of.Itembildlöschen(Char.Name, i+1);
 				z = z + Lager.Größe;				//um aus der Lagerdurchsuchung rauszukommen, da der Abgleich Zu Ende ist.
 				i++;								//i wird um eins erhöht, um auf den nächsten Inventarplatz zuzugreifen.
 			}
@@ -347,102 +351,103 @@ public class Sortieren {
 	public static void charakterDasItemGeben(Charakter Char, String K1) {
 		if (K1.equals("Schwert")) {
 			if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-				//JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+				//System.out.println("Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if (Char.Einlagern(Schwert) == true) {
-					//Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Krieger.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-					System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 			}
 		}
 		else if (K1.equals("Schild")) {
 			if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if (Char.Einlagern(Schild) == true) {
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Krieger.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-					System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 				
 			}
 		}
 		else if (K1.equals("Bogen")) {
 			if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if(Char.Einlagern(Bogen) == true) {
-					//Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Waldläufer.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-					System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 			}
 		}
 		else if (K1.equals("Gift")) {
 			if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if(Char.Einlagern(Gift) == true) {
-					//Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Waldläufer.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-				System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 			}
 		}
 		else if (K1.equals("Stab")) {
 			if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if(Char.Einlagern(Stab) == true) {
-					//Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Magier.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-					System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 			}
 		}
 		else if (K1.equals("Ring")) {
 			if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-				System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
 			}
 			else {
 				if(Char.Einlagern(Ring) == true) {
-					//Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
+					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
 					Magier.MengeRichtigerItems += 1;
-					System.out.println(Char.Name + " nimmt " + K1 + " auf. \n");
+					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
 				}
 				else
-				System.out.println("Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
 				
 			}
 		}
 		else {
-			System.out.println("Dieses Item wird nicht unterstützt. Bitte eines aus der oberen Liste wählen");
+			JOptionPane.showMessageDialog(Of.f, "Dieses Item wird nicht unterstützt. Bitte eines aus der oberen Liste wählen");
 		}
 	}
 	
 	public static void InTextfeldSchreiben(String s) {
-		System.out.print(s);
+		Of.Schreiben(s);
 	}
 	
 	public static void Charaktersortieren(String s) {
@@ -457,19 +462,19 @@ public class Sortieren {
 	public static void reset() {
 		for (int x = 0; x < Inventargröße; x++) {
 			Magier.Leeren(x);
-			//Of.Itembildlöschen(Magier.Name, x+1);
+			Of.Itembildlöschen(Magier.Name, x+1);
 			Krieger.Leeren(x);
-			//Of.Itembildlöschen(Krieger.Name, x+1);
+			Of.Itembildlöschen(Krieger.Name, x+1);
 			Waldläufer.Leeren(x);
-			//Of.Itembildlöschen(Waldläufer.Name, x+1);
+			Of.Itembildlöschen(Waldläufer.Name, x+1);
 		}
 		for (int y = 0; y < Lagergröße; y++) {
-			//Of.BankBildlöschen(y+1);
+			Of.BankBildlöschen(y+1);
 		}
 		Magier.MengeRichtigerItems = 0;
 		Krieger.MengeRichtigerItems = 0;
 		Waldläufer.MengeRichtigerItems = 0;
-		//Of.TA.setText(" ");
+		Of.TA.setText(" ");
 		anzeigen();
 	}
 	

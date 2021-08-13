@@ -1,2 +1,2 @@
-module sorting_algorithm {
+interface sorting_algorithm {
 }
