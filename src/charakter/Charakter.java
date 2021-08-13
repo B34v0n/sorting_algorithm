@@ -41,7 +41,7 @@ public class Charakter extends Sortieren {
 	
 	public void ItemsFestlegen(Item richtig) {								//welche Items sind die, die der Charakter haben möchte
 		richtigeItems.add(richtig);
-		super.InTextfeldSchreiben(Name + " nimmt " + richtigeItems.get(AnzahlRichtigeItems).GibName() + "\n");
+		super.InTextfeldSchreiben(Name + " takes " + richtigeItems.get(AnzahlRichtigeItems).GibName() + "\n");
 		AnzahlRichtigeItems += 1;
 		/*AnzahlRichtigeItems = AnzahlRichtigeItems + 1; 						// erhöht die Anzahl der richtigen Items
 		Item temp[] = new Item[AnzahlRichtigeItems];						// ein temporäres Array zum kopieren
@@ -53,12 +53,12 @@ public class Charakter extends Sortieren {
 	}
 	
 	public void PlätzeAnzeigen() {						//hier wird ausgegeben, welche Items die richtigen sind, wie groß das Inventar ist und welche Items dort gelagert sind.
-		super.InTextfeldSchreiben(Name + " nimmt: ");
+		super.InTextfeldSchreiben(Name + " takes: ");
 		for (int x = 0; x < AnzahlRichtigeItems; x++) {
 			super.InTextfeldSchreiben(" " + richtigeItems.get(x).GibName() );
 		}
 		super.InTextfeldSchreiben("\n");
-		super.InTextfeldSchreiben("Inventar von " + Name + " hat " + Inventar.length + " Plätze. \n");
+		super.InTextfeldSchreiben("Inventory of " + Name + " has " + Inventar.length + " Spaces. \n");
 		
 		for (int y = 0; y < InventarGröße; y++) {
 			Inventar[y].anzeigen(y);

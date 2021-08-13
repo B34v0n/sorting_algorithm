@@ -16,15 +16,15 @@ public class Sortieren {
 	public static int Lagergröße = 10;
 	public static int Inventargröße = 4;
 	public static Bank Lager = new Bank(Lagergröße);
-	public static Charakter Krieger = new Charakter(Inventargröße, "Krieger");
-	public static Charakter Magier = new Charakter(Inventargröße, "Magier");
-	public static Charakter Waldläufer = new Charakter(Inventargröße, "Waldläufer");
-	public static Item Schwert = new Item("Schwert", "Schwert");
-	public static Item Schild = new Item("Schild","Schild");
-	public static Item Stab = new Item("Stab","Stab");
+	public static Charakter Warrior = new Charakter(Inventargröße, "Warrior");
+	public static Charakter Mage = new Charakter(Inventargröße, "Mage");
+	public static Charakter Ranger = new Charakter(Inventargröße, "Ranger");
+	public static Item Sword = new Item("Sword", "Sword");
+	public static Item Shield = new Item("Shield","Shield");
+	public static Item Staff = new Item("Staff","Staff");
 	public static Item Ring = new Item("Ring","Ring");
-	public static Item Bogen = new Item("Bogen","Bogen");
-	public static Item Gift = new Item("Gift","Gift");
+	public static Item Bow = new Item("Bow","Bow");
+	public static Item Poison = new Item("Poison","Poison");
 	
 	
 	
@@ -32,18 +32,18 @@ public class Sortieren {
 	public static void main (String[] args) {
 				
 		// Hier wird festgelegt, welcher Charakter welches Item nimmt.
-		Krieger.ItemsFestlegen(Schwert);
-		Krieger.ItemsFestlegen(Schild);
-		Magier.ItemsFestlegen(Stab);
-		Magier.ItemsFestlegen(Ring);
-		Waldläufer.ItemsFestlegen(Bogen);
-		Waldläufer.ItemsFestlegen(Gift);
+		Warrior.ItemsFestlegen(Sword);
+		Warrior.ItemsFestlegen(Shield);
+		Mage.ItemsFestlegen(Staff);
+		Mage.ItemsFestlegen(Ring);
+		Ranger.ItemsFestlegen(Bow);
+		Ranger.ItemsFestlegen(Poison);
 		
 		
 		/*
-		Scannen(Krieger);
-		Scannen(Magier);
-		Scannen(Waldläufer);
+		Scannen(Warrior);
+		Scannen(Mage);
+		Scannen(Ranger);
 		*/
 		
 		//TestSzenarien();
@@ -56,34 +56,34 @@ public class Sortieren {
 
 
 	public static void sortierenKern() {
-		InTextfeldSchreiben(" \n Das Sortieren startet! \n");
-		InTextfeldSchreiben("Aktuelle Belegung: \n");
+		InTextfeldSchreiben(" \n The Sorting starts: \n");
+		InTextfeldSchreiben("Inventory right now: \n");
 		anzeigen();
 		InTextfeldSchreiben("\n");
-		sortieren(Krieger);
-		//System.out.println("Krieger sortiert 1:");
+		sortieren(Warrior);
+		//System.out.println("Warrior sortiert 1:");
 		//anzeigen();
-		sortieren(Magier);
-		//System.out.println("Magier sortiert 1:");
+		sortieren(Mage);
+		//System.out.println("Mage sortiert 1:");
 		//anzeigen();
-		sortieren(Waldläufer);
-		//System.out.println("Waldläufer sortiert:");
+		sortieren(Ranger);
+		//System.out.println("Ranger sortiert:");
 		//anzeigen();
-		sortieren(Magier);
-		//System.out.println("Magier sortiert 2:");
+		sortieren(Mage);
+		//System.out.println("Mage sortiert 2:");
 		//anzeigen();
-		sortieren(Krieger);
+		sortieren(Warrior);
 		InTextfeldSchreiben("\n");
-		InTextfeldSchreiben("Endergebnis: \n");
+		InTextfeldSchreiben("Finally: \n");
 	
 		anzeigen();
 	}
 	
 	
 	public static void anzeigen () {
-		Krieger.PlätzeAnzeigen();
-		Magier.PlätzeAnzeigen();
-		Waldläufer.PlätzeAnzeigen();
+		Warrior.PlätzeAnzeigen();
+		Mage.PlätzeAnzeigen();
+		Ranger.PlätzeAnzeigen();
 		Lager.bankAnzeigen();
 	}
 	
@@ -116,7 +116,7 @@ public class Sortieren {
 				Item Vergleichsitem = Lager.GibItem(v);
 				if (Char.Abgleich(Vergleichsitem) == true) {
 					for (int w = 0; w < Char.InventarGröße; w++) {
-						InTextfeldSchreiben(Char.Name + " nimmt das Item " + Vergleichsitem.GibName() + "\n");
+						InTextfeldSchreiben(Char.Name + " takes the Item " + Vergleichsitem.GibName() + "\n");
 						aktion = true;
 						Char.Einlagern(Vergleichsitem);
 						Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
@@ -129,7 +129,7 @@ public class Sortieren {
 		}
 		
 		if (aktion == false) {
-			InTextfeldSchreiben(Char.Name + " unternimmt nichts. \n");
+			InTextfeldSchreiben(Char.Name + " doesn't do anything. \n");
 		}
 	}
 
@@ -139,7 +139,7 @@ public class Sortieren {
 			if (Lager.IstLeer(y) == false) { 						//wenn die Stelle y frei ist,
 				Item Vergleichsitem = Lager.GibItem(y);				//Das Item an Stelle y nehmen und
 				if (Char.Abgleich(Vergleichsitem) == true) {		//abgleichen. wenn es ein richtiges Item ist,
-					InTextfeldSchreiben(Char.Name + " nimmt das Item " + Vergleichsitem.GibName() + "\n");
+					InTextfeldSchreiben(Char.Name + " takes the Item " + Vergleichsitem.GibName() + "\n");
 					Char.Einlagern(Vergleichsitem);					//Das Item wird am nächsten freien Inventarplatz eingelagert
 					Of.Itembild(Char.Name, Vergleichsitem.GibArt(), Char.eingelagerterPlatz());
 					Lager.Leeren(y);								//und der Bankplatz geleert.
@@ -161,7 +161,7 @@ public class Sortieren {
 		int z = 0;										//z anlegen um das Lager zu durchsuchen.
 		while (z < Lager.Größe) { 					//Wird das Lager mit z durchsucht:
 			if (Lager.IstLeer(z) == true) {			//Wenn der Lagerplatz an z Leer ist, dann:
-				InTextfeldSchreiben(Char.Name + " legt " + Char.GibItem(i).GibName() + " an die " + (z+1) + ".te Stelle in der Bank. \n");
+				InTextfeldSchreiben(Char.Name + " puts " + Char.GibItem(i).GibName() + " at the " + (z+1) + " Place in the Bank. \n");
 				Of.BankBild(Char.GibItem(i).GibArt(), z+1);
 				Lager.belegen(Char.GibItem(i), z);	//wird das Item an Platz i an Platz z gelegt. 
 				Char.Leeren(i);						//und die Stelle i im Inventar geleert. 
@@ -190,7 +190,7 @@ public class Sortieren {
 				while (g < 1) {
 					K = scanner.nextInt();
 					if (K > Char.InventarGröße) {
-						System.out.println("Das sind zu viele Items!");
+						System.out.println("That's too many Items!");
 					}
 					else 
 						g++;
@@ -207,64 +207,64 @@ public class Sortieren {
 		int d = 1;
 		while (d <= K) {
 			String K1 = scanner.next();
-			if (K1.equals("Schwert")) {
-				if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+			if (K1.equals("Sword")) {
+				if (Warrior.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
-					Char.Einlagern(Schwert);
+					Char.Einlagern(Sword);
 					d++;
-					Krieger.MengeRichtigerItems += 1;
+					Warrior.MengeRichtigerItems += 1;
 				}
 			}
-			else if (K1.equals("Schild")) {
-				if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+			else if (K1.equals("Shield")) {
+				if (Warrior.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
-					Char.Einlagern(Schild);
+					Char.Einlagern(Shield);
 					d++;
-					Krieger.MengeRichtigerItems += 1;
+					Warrior.MengeRichtigerItems += 1;
 				}
 			}
-			else if (K1.equals("Bogen")) {
-				if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+			else if (K1.equals("Bow")) {
+				if (Ranger.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
-					Char.Einlagern(Bogen);
+					Char.Einlagern(Bow);
 					d++;
-					Waldläufer.MengeRichtigerItems += 1;
+					Ranger.MengeRichtigerItems += 1;
 				}
 			}
-			else if (K1.equals("Gift")) {
-				if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+			else if (K1.equals("Poison")) {
+				if (Ranger.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
-					Char.Einlagern(Gift);
+					Char.Einlagern(Poison);
 					d++;
-					Waldläufer.MengeRichtigerItems += 1;
+					Ranger.MengeRichtigerItems += 1;
 				}
 			}
-			else if (K1.equals("Stab")) {
-				if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+			else if (K1.equals("Staff")) {
+				if (Mage.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
-					Char.Einlagern(Stab);
+					Char.Einlagern(Staff);
 					d++;
-					Magier.MengeRichtigerItems += 1;
+					Mage.MengeRichtigerItems += 1;
 				}
 			}
 			else if (K1.equals("Ring")) {
-				if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-					System.out.println("Es gibt bereits zu viele Items dieser Art.");
+				if (Mage.MengeRichtigerItems >= Warrior.InventarGröße) {
+					System.out.println("There are already too many of these Items.");
 				}
 				else {
 					Char.Einlagern(Ring);
 					d++;
-					Magier.MengeRichtigerItems += 1;
+					Mage.MengeRichtigerItems += 1;
 				}
 			}
 			else {
@@ -279,170 +279,170 @@ public class Sortieren {
 		System.out.println("");
 		System.out.println("Anlegen der Items:");
 		
-		Item Schwert1 = new Item ("Schwert", "Schwert1"); 
-		Item Schwert2 = new Item ("Schwert", "Schwert2");
-		Item Schild1 = new Item ("Schild", "Schild1");
-		Item Schild2 = new Item ("Schild", "Schild2");
-		Item Bogen1 = new Item("Bogen", "Bogen1");
-		Item Bogen2 = new Item("Bogen", "Bogen2");
-		Item Gift1 = new Item("Gift", "Gift1");
-		Item Gift2 = new Item("Gift", "Gift2");
-		Item Stab1 = new Item("Stab", "Stab1");
-		Item Stab2 = new Item("Stab", "Stab2");
+		Item Sword1 = new Item ("Sword", "Sword1"); 
+		Item Sword2 = new Item ("Sword", "Sword2");
+		Item Shield1 = new Item ("Shield", "Shield1");
+		Item Shield2 = new Item ("Shield", "Shield2");
+		Item Bow1 = new Item("Bow", "Bow1");
+		Item Bow2 = new Item("Bow", "Bow2");
+		Item Poison1 = new Item("Poison", "Poison1");
+		Item Poison2 = new Item("Poison", "Poison2");
+		Item Staff1 = new Item("Staff", "Staff1");
+		Item Staff2 = new Item("Staff", "Staff2");
 		Item Ring1 = new Item("Ring", "Ring1");
 		Item Ring2 = new Item("Ring", "Ring2");
 		
 		
 		//Test-Szenario 1 - Jeder hat 4 Items, teilweise richtig, teilweise falsch
 		
-		Krieger.Einlagern(Schwert1); 
-		Krieger.Einlagern(Schwert2);
-		Krieger.Einlagern(Stab1);
-		Krieger.Einlagern(Bogen1);
-		Magier.Einlagern(Schild1);
-		Magier.Einlagern(Bogen2);
-		Magier.Einlagern(Gift1);
-		Magier.Einlagern(Ring1);
-		Waldläufer.Einlagern(Stab2);
-		Waldläufer.Einlagern(Gift2);
-		Waldläufer.Einlagern(Ring2);
-		Waldläufer.Einlagern(Schild2);
+		Warrior.Einlagern(Sword1); 
+		Warrior.Einlagern(Sword2);
+		Warrior.Einlagern(Staff1);
+		Warrior.Einlagern(Bow1);
+		Mage.Einlagern(Shield1);
+		Mage.Einlagern(Bow2);
+		Mage.Einlagern(Poison1);
+		Mage.Einlagern(Ring1);
+		Ranger.Einlagern(Staff2);
+		Ranger.Einlagern(Poison2);
+		Ranger.Einlagern(Ring2);
+		Ranger.Einlagern(Shield2);
 		
 		
 		//Test-Szenario 2 - Jeder hat Items, die er haben will.
 		/*
-		Krieger.Einlagern(Schwert1);
-		Krieger.Einlagern(Schild1);
-		Magier.Einlagern(Stab1);
-		Magier.Einlagern(Ring1);
-		Waldläufer.Einlagern(Bogen1);
-		Waldläufer.Einlagern(Gift1);
+		Warrior.Einlagern(Sword1);
+		Warrior.Einlagern(Shield1);
+		Mage.Einlagern(Staff1);
+		Mage.Einlagern(Ring1);
+		Ranger.Einlagern(Bow1);
+		Ranger.Einlagern(Poison1);
 		*/
 		 
 		//Test-Szenario 3 - Alle haben etwas falsches und die Bank wird voll.
 		/*
-		Krieger.Einlagern(Gift1); 
-		Krieger.Einlagern(Gift2);
-		Krieger.Einlagern(Bogen1);
-		Krieger.Einlagern(Bogen2);
-		Magier.Einlagern(Schwert1);
-		Magier.Einlagern(Schwert2);
-		Magier.Einlagern(Schild1);
-		Magier.Einlagern(Schild2);
-		Waldläufer.Einlagern(Stab1);
-		Waldläufer.Einlagern(Stab2);
-		Waldläufer.Einlagern(Ring1);
-		Waldläufer.Einlagern(Ring2);	
+		Warrior.Einlagern(Poison1); 
+		Warrior.Einlagern(Poison2);
+		Warrior.Einlagern(Bow1);
+		Warrior.Einlagern(Bow2);
+		Mage.Einlagern(Sword1);
+		Mage.Einlagern(Sword2);
+		Mage.Einlagern(Shield1);
+		Mage.Einlagern(Shield2);
+		Ranger.Einlagern(Staff1);
+		Ranger.Einlagern(Staff2);
+		Ranger.Einlagern(Ring1);
+		Ranger.Einlagern(Ring2);	
 		*/
 		
 	}
 	
 	public static Charakter gibCharakter(String s) {
-		if (s == "Waldläufer")
-			return Waldläufer;
-		else if (s == "Krieger")
-			return Krieger;
-		else if (s == "Magier")
-			return Magier;
+		if (s == "Ranger")
+			return Ranger;
+		else if (s == "Warrior")
+			return Warrior;
+		else if (s == "Mage")
+			return Mage;
 		else
 			return null;
 	}
 	
 	public static void charakterDasItemGeben(Charakter Char, String K1) {
-		if (K1.equals("Schwert")) {
-			if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
-				//System.out.println("Es gibt bereits zu viele Items dieser Art.");
+		if (K1.equals("Sword")) {
+			if (Warrior.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
+				//System.out.println("There are already too many of these Items.");
 			}
 			else {
-				if (Char.Einlagern(Schwert) == true) {
+				if (Char.Einlagern(Sword) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Krieger.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Warrior.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 			}
 		}
-		else if (K1.equals("Schild")) {
-			if (Krieger.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+		else if (K1.equals("Shield")) {
+			if (Warrior.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
 			}
 			else {
-				if (Char.Einlagern(Schild) == true) {
+				if (Char.Einlagern(Shield) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Krieger.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Warrior.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 				
 			}
 		}
-		else if (K1.equals("Bogen")) {
-			if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+		else if (K1.equals("Bow")) {
+			if (Ranger.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
 			}
 			else {
-				if(Char.Einlagern(Bogen) == true) {
+				if(Char.Einlagern(Bow) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Waldläufer.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Ranger.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 			}
 		}
-		else if (K1.equals("Gift")) {
-			if (Waldläufer.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+		else if (K1.equals("Poison")) {
+			if (Ranger.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
 			}
 			else {
-				if(Char.Einlagern(Gift) == true) {
+				if(Char.Einlagern(Poison) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Waldläufer.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Ranger.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 			}
 		}
-		else if (K1.equals("Stab")) {
-			if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+		else if (K1.equals("Staff")) {
+			if (Mage.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
 			}
 			else {
-				if(Char.Einlagern(Stab) == true) {
+				if(Char.Einlagern(Staff) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Magier.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Mage.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 			}
 		}
 		else if (K1.equals("Ring")) {
-			if (Magier.MengeRichtigerItems >= Krieger.InventarGröße) {
-				JOptionPane.showMessageDialog(Of.f, "Es gibt bereits zu viele Items dieser Art.");
+			if (Mage.MengeRichtigerItems >= Warrior.InventarGröße) {
+				JOptionPane.showMessageDialog(Of.f, "There are already too many of these Items.");
 			}
 			else {
 				if(Char.Einlagern(Ring) == true) {
 					Of.Itembild(Char.Name, K1, Char.eingelagerterPlatz());
-					Magier.MengeRichtigerItems += 1;
-					Of.Schreiben(Char.Name + " nimmt " + K1 + " auf. \n");
+					Mage.MengeRichtigerItems += 1;
+					Of.Schreiben(Char.Name + " takes " + K1 + ". \n");
 				}
 				else
-					JOptionPane.showMessageDialog(Of.f, "Das Inventar von " + Char.Name + " ist voll.");
+					JOptionPane.showMessageDialog(Of.f, "The Inventory of " + Char.Name + " is full.");
 				
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(Of.f, "Dieses Item wird nicht unterstützt. Bitte eines aus der oberen Liste wählen");
+			JOptionPane.showMessageDialog(Of.f, "Please choose a supported Item.");
 		}
 	}
 	
@@ -451,29 +451,29 @@ public class Sortieren {
 	}
 	
 	public static void Charaktersortieren(String s) {
-		if (s == "Waldläufer")
-			sortieren(Waldläufer);
-		else if (s == "Krieger")
-			sortieren(Krieger);
-		if (s == "Magier")
-			sortieren(Magier);
+		if (s == "Ranger")
+			sortieren(Ranger);
+		else if (s == "Warrior")
+			sortieren(Warrior);
+		if (s == "Mage")
+			sortieren(Mage);
 	}
 	
 	public static void reset() {
 		for (int x = 0; x < Inventargröße; x++) {
-			Magier.Leeren(x);
-			Of.Itembildlöschen(Magier.Name, x+1);
-			Krieger.Leeren(x);
-			Of.Itembildlöschen(Krieger.Name, x+1);
-			Waldläufer.Leeren(x);
-			Of.Itembildlöschen(Waldläufer.Name, x+1);
+			Mage.Leeren(x);
+			Of.Itembildlöschen(Mage.Name, x+1);
+			Warrior.Leeren(x);
+			Of.Itembildlöschen(Warrior.Name, x+1);
+			Ranger.Leeren(x);
+			Of.Itembildlöschen(Ranger.Name, x+1);
 		}
 		for (int y = 0; y < Lagergröße; y++) {
 			Of.BankBildlöschen(y+1);
 		}
-		Magier.MengeRichtigerItems = 0;
-		Krieger.MengeRichtigerItems = 0;
-		Waldläufer.MengeRichtigerItems = 0;
+		Mage.MengeRichtigerItems = 0;
+		Warrior.MengeRichtigerItems = 0;
+		Ranger.MengeRichtigerItems = 0;
 		Of.TA.setText(" ");
 		anzeigen();
 	}

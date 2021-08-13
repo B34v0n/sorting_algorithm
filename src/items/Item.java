@@ -9,15 +9,15 @@ public class Item  {
 	private String ArtDesItem = "";
 	
 	public Item(String Art, String benennen) {
-		if (Art == "Schwert") {
+		if (Art == "Sword") {
 			final Schwert schwert = new Schwert(benennen);
 			ArtDesItem = Art; 
 		}
-		else if (Art == "Schild") {
+		else if (Art == "Shield") {
 			final Schild schild = new Schild(benennen);
 			ArtDesItem = Art;
 		}
-		else if (Art == "Stab") {
+		else if (Art == "Staff") {
 			final Stab stab = new Stab(benennen);
 			ArtDesItem = Art;
 		}
@@ -25,11 +25,11 @@ public class Item  {
 			final Ring ring = new Ring(benennen);
 			ArtDesItem = Art;
 		}
-		else if (Art == "Bogen") {
+		else if (Art == "Bow") {
 			final Bogen bogen = new Bogen(benennen);
 			ArtDesItem = Art;
 		}
-		else if (Art == "Gift") {
+		else if (Art == "Poison") {
 			final Gift gift = new Gift(benennen);
 			ArtDesItem = Art;
 		}

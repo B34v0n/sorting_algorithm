@@ -26,16 +26,16 @@ public class Oberfläche extends Sortieren{
 	JTextArea TA = new JTextArea();
 	Canvas C = new Canvas();
 	final ImageIcon BankBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Bank.png"));
-	final ImageIcon BogenBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Bogen.png"));
-	final ImageIcon GiftBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Gift.png"));
+	final ImageIcon BowBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Bogen.png"));
+	final ImageIcon PoisonBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Gift.png"));
 	final ImageIcon InventarBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Inventarplatz.png"));
-	final ImageIcon KriegerBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Krieger.png"));
-	final ImageIcon MagierBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Magier.png"));
+	final ImageIcon WarriorBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Krieger.png"));
+	final ImageIcon MageBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Magier.png"));
 	final ImageIcon RingBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Ring.png"));
-	final ImageIcon SchildBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Schild.png"));
-	final ImageIcon SchwertBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Schwert.png"));
-	final ImageIcon StabBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Stab.png"));
-	final ImageIcon WaldläuferBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Waldläufer.png"));
+	final ImageIcon ShieldBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Schild.png"));
+	final ImageIcon SwordBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Schwert.png"));
+	final ImageIcon StaffBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Stab.png"));
+	final ImageIcon RangerBild = new ImageIcon(Oberfläche.class.getResource("..\\Bilder\\Waldläufer.png"));
 	final JLabel W1 = new JLabel(InventarBild);
 	final JLabel W2 = new JLabel(InventarBild);
 	final JLabel W3 = new JLabel(InventarBild);
@@ -65,10 +65,10 @@ public class Oberfläche extends Sortieren{
 		JButton b1 = new JButton(BankBild);
 		b1.setBounds(20, 750, 100, 100);
 		
-		JButton b2 = new JButton(BogenBild);
+		JButton b2 = new JButton(BowBild);
 		b2.setBounds(300, 100, 40, 40);
 		
-		JButton b3 = new JButton(GiftBild);
+		JButton b3 = new JButton(PoisonBild);
 		b3.setBounds(400, 100, 40, 40);
 		
 		JButton b4 = new JButton(InventarBild);
@@ -77,42 +77,42 @@ public class Oberfläche extends Sortieren{
 		PlätzeAnlegen();
 		
 		
-		JButton b5 = new JButton(KriegerBild);
+		JButton b5 = new JButton(WarriorBild);
 		b5.setBounds(820, 200, 200, 400);
 		b5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){    
-				CS("Krieger");
-				JOptionPane.showMessageDialog(f,"Krieger sortiert!"); 
+				CS("Warrior");
+				JOptionPane.showMessageDialog(f,"Warrior sorted!"); 
 				} 
 		});
 		
-		JButton b6 = new JButton(MagierBild);
+		JButton b6 = new JButton(MageBild);
 		b6.setBounds(1370, 200, 200, 400);
 		b6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){    
-				CS("Magier");
-				JOptionPane.showMessageDialog(f,"Magier sortiert!"); 
+				CS("Mage");
+				JOptionPane.showMessageDialog(f,"Mage sorted!"); 
 				} 
 		});
 		
 		JButton b7 = new JButton(RingBild);
 		b7.setBounds(1400, 100, 40, 40);
 		
-		JButton b8 = new JButton(SchildBild);
+		JButton b8 = new JButton(ShieldBild);
 		b8.setBounds(850, 100, 40, 40);
 		
-		JButton b9 = new JButton(SchwertBild);
+		JButton b9 = new JButton(SwordBild);
 		b9.setBounds(950, 100, 40, 40);
 		
-		JButton b10 = new JButton(StabBild);
+		JButton b10 = new JButton(StaffBild);
 		b10.setBounds(1500, 100, 40, 40);
 		
-		JButton b11 = new JButton(WaldläuferBild);
+		JButton b11 = new JButton(RangerBild);
 		b11.setBounds(270, 200, 200, 400);
 		b11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){    
-				CS("Waldläufer");
-				JOptionPane.showMessageDialog(f,"Waldläufer sortiert!"); 
+				CS("Ranger");
+				JOptionPane.showMessageDialog(f,"Ranger sorted!"); 
 				} 
 		});
 		
@@ -121,7 +121,7 @@ public class Oberfläche extends Sortieren{
 		sort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){    
 				SK();
-				JOptionPane.showMessageDialog(f,"Sortiert!"); 
+				JOptionPane.showMessageDialog(f,"sorted!"); 
 				} 
 		});
 		
@@ -138,13 +138,13 @@ public class Oberfläche extends Sortieren{
 		
 		
 		final JRadioButton rb1, rb2, rb3;
-		rb1 = new JRadioButton("Waldläufer");
+		rb1 = new JRadioButton("Ranger");
 		rb1.setBounds(330, 160, 200, 30);
 		
-		rb2 = new JRadioButton("Krieger");
+		rb2 = new JRadioButton("Warrior");
 		rb2.setBounds(880, 160, 200, 30);
 
-		rb3 = new JRadioButton("Magier");
+		rb3 = new JRadioButton("Mage");
 		rb3.setBounds(1430, 160, 200, 30);
 		
 		ButtonGroup bg = new ButtonGroup();
@@ -158,13 +158,13 @@ public class Oberfläche extends Sortieren{
 		b9.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Schwert");
+					CDIG("Ranger", "Sword");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Schwert");
+					CDIG("Warrior", "Sword");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Schwert");
+					CDIG("Mage", "Sword");
 				}
 			}
 		});
@@ -172,13 +172,13 @@ public class Oberfläche extends Sortieren{
 		b2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Bogen");
+					CDIG("Ranger", "Bow");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Bogen");
+					CDIG("Warrior", "Bow");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Bogen");
+					CDIG("Mage", "Bow");
 				}
 			}
 		});
@@ -186,13 +186,13 @@ public class Oberfläche extends Sortieren{
 		b3.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Gift");
+					CDIG("Ranger", "Poison");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Gift");
+					CDIG("Warrior", "Poison");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Gift");
+					CDIG("Mage", "Poison");
 				}
 			}
 		});
@@ -200,13 +200,13 @@ public class Oberfläche extends Sortieren{
 		b7.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Ring");
+					CDIG("Ranger", "Ring");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Ring");
+					CDIG("Warrior", "Ring");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Ring");
+					CDIG("Mage", "Ring");
 				}
 			}
 		});
@@ -214,13 +214,13 @@ public class Oberfläche extends Sortieren{
 		b8.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Schild");
+					CDIG("Ranger", "Shield");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Schild");
+					CDIG("Warrior", "Shield");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Schild");
+					CDIG("Mage", "Shield");
 				}
 			}
 		});
@@ -228,13 +228,13 @@ public class Oberfläche extends Sortieren{
 		b10.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				if(rb1.isSelected()) {
-					CDIG("Waldläufer", "Stab");
+					CDIG("Ranger", "Staff");
 				}
 				else if(rb2.isSelected()) {
-					CDIG("Krieger", "Stab");
+					CDIG("Warrior", "Staff");
 				}
 				else if(rb3.isSelected()) {
-					CDIG("Magier", "Stab");
+					CDIG("Mage", "Staff");
 				}
 			}
 		});
@@ -253,19 +253,19 @@ public class Oberfläche extends Sortieren{
 	}
 
 	private void PlätzeAnlegen() {
-		//WaldläuferInventarplätze
+		//RangerInventarplätze
 		W1.setBounds(200, 200, 40, 40);
 		W2.setBounds(200, 320, 40, 40);
 		W3.setBounds(200, 440, 40, 40);
 		W4.setBounds(200, 560, 40, 40);
 		f.add(W1); f.add(W2); f.add(W3); f.add(W4);
-		//KriegerInventarplätze
+		//WarriorInventarplätze
 		K1.setBounds(750, 200, 40, 40);
 		K2.setBounds(750, 320, 40, 40);
 		K3.setBounds(750, 440, 40, 40);
 		K4.setBounds(750, 560, 40, 40);
 		f.add(K1); f.add(K2); f.add(K3); f.add(K4);
-		//MagierInventarplätze
+		//MageInventarplätze
 		M1.setBounds(1300, 200, 40, 40);
 		M2.setBounds(1300, 320, 40, 40);
 		M3.setBounds(1300, 440, 40, 40);
@@ -308,7 +308,7 @@ public class Oberfläche extends Sortieren{
 	}
 	
 	public void Itembild(String C, String I, int x) {
-		if (C == "Waldläufer") {
+		if (C == "Ranger") {
 			if (x == 1) {
 				W1.setIcon(Itemabgleich(I));
 			}
@@ -322,7 +322,7 @@ public class Oberfläche extends Sortieren{
 				W4.setIcon(Itemabgleich(I));
 			}
 		}
-		else if (C == "Krieger") {
+		else if (C == "Warrior") {
 			if (x == 1) {
 				K1.setIcon(Itemabgleich(I));
 			}
@@ -336,7 +336,7 @@ public class Oberfläche extends Sortieren{
 				K4.setIcon(Itemabgleich(I));
 			}
 		}
-		else if (C == "Magier") {
+		else if (C == "Mage") {
 			if (x == 1) {
 				M1.setIcon(Itemabgleich(I));
 			}
@@ -376,25 +376,25 @@ public class Oberfläche extends Sortieren{
 	}
 	
 	public ImageIcon Itemabgleich(String s) {
-		if (s == "Schwert")
-			return SchwertBild;
-		else if (s == "Schild")
-			return SchildBild;
-		else if (s == "Bogen")
-			return BogenBild;
-		else if (s == "Stab")
-			return StabBild;
+		if (s == "Sword")
+			return SwordBild;
+		else if (s == "Shield")
+			return ShieldBild;
+		else if (s == "Bow")
+			return BowBild;
+		else if (s == "Staff")
+			return StaffBild;
 		else if (s == "Ring")
 			return RingBild;
-		else if (s == "Gift")
-			return GiftBild;
+		else if (s == "Poison")
+			return PoisonBild;
 		else
 			return InventarBild;
 	}
 	
 	
 	public void Itembildlöschen(String C, int x) {
-		if (C == "Waldläufer") {
+		if (C == "Ranger") {
 			if (x == 1) {
 				W1.setIcon(InventarBild);
 			}
@@ -408,7 +408,7 @@ public class Oberfläche extends Sortieren{
 				W4.setIcon(InventarBild);
 			}
 		}
-		else if (C == "Krieger") {
+		else if (C == "Warrior") {
 			if (x == 1) {
 				K1.setIcon(InventarBild);
 			}
@@ -422,7 +422,7 @@ public class Oberfläche extends Sortieren{
 				K4.setIcon(InventarBild);
 			}
 		}
-		else if (C == "Magier") {
+		else if (C == "Mage") {
 			if (x == 1) {
 				M1.setIcon(InventarBild);
 			}

@@ -36,9 +36,9 @@ public class Lagerplatz extends Sortieren {
 	public void anzeigen(int Stelle) {
 		Stelle += 1;
 		if (leer == true)
-			super.InTextfeldSchreiben("Der Platz Nummer " + Stelle + " ist frei. \n");
+			super.InTextfeldSchreiben("The place number " + Stelle + " is free. \n");
 		else
-			super.InTextfeldSchreiben("Der Platz Nummer " + Stelle + " ist belegt. Hier liegt " + HierGelagertesItem.GibName() + ". \n");
+			super.InTextfeldSchreiben("The place number " + Stelle + " is not free. Here is " + HierGelagertesItem.GibName() + ". \n");
 	}
 	
 	public boolean IstLeer() {
