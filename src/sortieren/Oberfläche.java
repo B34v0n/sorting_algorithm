@@ -116,7 +116,7 @@ public class Oberfläche extends Sortieren{
 				} 
 		});
 		
-		JButton sort = new JButton("Sortieren!");
+		JButton sort = new JButton("Sort!");
 		sort.setBounds(870, 20, 100, 30);
 		sort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){    
