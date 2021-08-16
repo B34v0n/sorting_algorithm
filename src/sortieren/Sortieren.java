@@ -27,12 +27,7 @@ public class Sortieren {
 	public static void main (String[] args) {
 				
 		// Hier wird festgelegt, welcher Charakter welches Item nimmt.
-		Krieger.ItemsFestlegen(Schwert);
-		Krieger.ItemsFestlegen(Schild);
-		Magier.ItemsFestlegen(Stab);
-		Magier.ItemsFestlegen(Ring);
-		Waldläufer.ItemsFestlegen(Bogen);
-		Waldläufer.ItemsFestlegen(Gift);
+		itemsFestlegen();
 		
 		
 		
@@ -49,6 +44,16 @@ public class Sortieren {
 		
 		
 		
+	}
+
+
+	private static void itemsFestlegen() {
+		Krieger.ItemsFestlegen(Schwert);
+		Krieger.ItemsFestlegen(Schild);
+		Magier.ItemsFestlegen(Stab);
+		Magier.ItemsFestlegen(Ring);
+		Waldläufer.ItemsFestlegen(Bogen);
+		Waldläufer.ItemsFestlegen(Gift);
 	}
 
 
@@ -456,20 +461,19 @@ public class Sortieren {
 	
 	public static void reset() {
 		for (int x = 0; x < Inventargröße; x++) {
-			Magier.Leeren(x);
 			//Of.Itembildlöschen(Magier.Name, x+1);
-			Krieger.Leeren(x);
 			//Of.Itembildlöschen(Krieger.Name, x+1);
-			Waldläufer.Leeren(x);
 			//Of.Itembildlöschen(Waldläufer.Name, x+1);
 		}
 		for (int y = 0; y < Lagergröße; y++) {
 			//Of.BankBildlöschen(y+1);
 		}
-		Magier.MengeRichtigerItems = 0;
-		Krieger.MengeRichtigerItems = 0;
-		Waldläufer.MengeRichtigerItems = 0;
 		//Of.TA.setText(" ");
+		Magier = new Charakter(Inventargröße, "Magier");
+		Krieger = new Charakter(Inventargröße, "Krieger");
+		Waldläufer = new Charakter(Inventargröße, "Waldläufer");
+		Lager = new Bank(Lagergröße);
+		itemsFestlegen();
 		anzeigen();
 	}
 	
