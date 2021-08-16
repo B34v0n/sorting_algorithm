@@ -15,7 +15,7 @@ public class Bank extends Sortieren{
 	Lagerplatz temp[]= new Lagerplatz [Größe];
 	bank = temp;
 	
-	super.InTextfeldSchreiben("Die Bank hat " + Größe + " Lagerplätze. \n");
+	super.InTextfeldSchreiben("The Bank has a storage capacity of " + Größe + ". \n");
 	for (int x = 0; x < Größe; x++) {
 		Item Leer = new Item("LeeresItem","");
 		bank[x] = new Lagerplatz(Leer);
@@ -25,7 +25,7 @@ public class Bank extends Sortieren{
 	}
 	
 	public void bankAnzeigen() {												//Die Bankgröße und die Plätze anzeigen
-		super.InTextfeldSchreiben("Die Bank hat " + Größe + " Lagerplätze. \n");
+		super.InTextfeldSchreiben("The Bank has a storage capacity of " + Größe + ". \n");
 		for (int x = 0; x < Größe; x++) {
 			bank[x].anzeigen(x);
 		}

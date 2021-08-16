@@ -25,7 +25,7 @@ public class Charakter extends Sortieren {
 		Name = benennen;
 		Lagerplatz temp[]= new Lagerplatz[InventarGröße];
 		Inventar = temp;
-		super.InTextfeldSchreiben("Inventar von " + Name + " hat " + InventarGröße + " Plätze: \n");
+		super.InTextfeldSchreiben("Inventory of " + Name + " has a storage capacity of " + InventarGröße + ": \n");
 		
 		//eigene For Schleife.
 		int x = 0;
@@ -58,7 +58,7 @@ public class Charakter extends Sortieren {
 			super.InTextfeldSchreiben(" " + richtigeItems.get(x).GibName() );
 		}
 		super.InTextfeldSchreiben("\n");
-		super.InTextfeldSchreiben("Inventory of " + Name + " has " + Inventar.length + " Spaces. \n");
+		super.InTextfeldSchreiben("Inventory of " + Name + " has a storage capacity of " + Inventar.length + ". \n");
 		
 		for (int y = 0; y < InventarGröße; y++) {
 			Inventar[y].anzeigen(y);
